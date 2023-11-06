@@ -1,0 +1,160 @@
+Q1. Create a Pandas Series that contains the following data: 4, 8, 15, 16, 23, and 42. Then, print the series.
+Ans:- import pandas as pd
+
+# Create a Pandas Series
+data = pd.Series([4, 8, 15, 16, 23, 42])
+
+# Print the series
+print(data)
+
+This code outputs:
+
+0    4
+1    8
+2    15
+3    16
+4    23
+5    42
+dtype: int64
+Q2. Create a variable of list type containing 10 elements in it, and apply pandas.Series function on the
+variable print it.
+Ans:- import pandas as pd
+
+# Create a list of 10 elements
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Create a Pandas Series from the list
+data = pd.Series(my_list)
+
+# Print the series
+print(data)
+
+This code outputs:
+
+0    1
+1    2
+2    3
+3    4
+4    5
+5    6
+6    7
+7    8
+8    9
+9    10
+dtype: int64
+
+Q3. Create a Pandas DataFrame that contains the following data:
+Ans:- import pandas as pd
+
+# Create a Pandas DataFrame
+data = pd.DataFrame({'Name': ['Alice', 'Bob', 'Claire'], 'Age': [25, 30, 27], 'Gender': ['Female', 'Male', 'Female']})
+
+# Print the DataFrame
+print(data)
+
+Output:
+
+   Name  Age Gender
+0  Alice   25  Female
+1    Bob   30    Male
+2  Claire   27  Female
+
+Q4. What is ‘DataFrame’ in pandas and how is it different from pandas.series? Explain with an example.
+Ans:- A Pandas DataFrame is a two-dimensional data structure that can be thought of as a spreadsheet. It is made up of rows and columns, and each cell in the DataFrame can contain a different value. DataFrames can store data of different types, such as integers, floats, strings, and dates.
+
+A Pandas Series is a one-dimensional data structure that can be thought of as a list with labels. Each element in the Series has a corresponding index, which is used to identify the element. Series can also store data of different types.
+
+Differences between Pandas DataFrames and Series:
+
+Feature	                          Pandas DataFrame	                                                    Pandas Series
+Dimensionality	                   Two-dimensional	                                                   One-dimensional
+Data types	                       Can store data of different types	                       Must store data of the same type
+Indexing	                       Can be indexed by row and column                              Can only be indexed by row
+Operations	                       Can perform a variety of operations on data, 
+                                    such as filtering,
+sorting, and aggregating	        Can only perform basic operations on data,                such as arithmetic and comparison
+
+
+Q5. What are some common functions you can use to manipulate data in a Pandas DataFrame? Can
+you give an example of when you might use one of these functions?
+
+Ans:- Here are some common functions you can use to manipulate data in a Pandas DataFrame:
+
+head() and tail(): These functions return the first and last few rows of a DataFrame, respectively. This can be useful for getting a quick overview of your data.
+
+describe(): This function provides summary statistics for each column of a DataFrame, such as the mean, median, and standard deviation. This can be useful for understanding the distribution of your data.
+
+sort_values(): This function sorts a DataFrame by the values in one or more columns. This can be useful for organizing your data in a specific way.
+
+filter(): This function returns a new DataFrame that only contains rows where the values in a specific column meet certain criteria. This can be useful for selecting a subset of your data for further analysis.
+
+groupby(): This function groups the rows of a DataFrame by the values in a specific column. This can be useful for performing aggregated calculations on your data.
+
+apply() and applymap(): These functions apply a function to each row or column of a DataFrame, respectively. This can be useful for performing custom transformations on your data.
+Here are some examples of when you might use these functions:
+
+You can use the head() and tail() functions to get a quick overview of your data, such as when you are first reading in a dataset.
+You can use the describe() function to understand the distribution of your data, such as when you are trying to identify outliers or anomalies.
+You can use the sort_values() function to organize your data in a specific way, such as when you are trying to create a visualization or report.
+You can use the filter() function to select a subset of your data for further analysis, such as when you are trying to identify trends or patterns in your data.
+You can use the groupby() function to perform aggregated calculations on your data, such as when you are trying to calculate the average sales by region or the number of customers who have made multiple purchases.
+You can use the apply() and applymap() functions to perform custom transformations on your data, such as when you are trying to create new features or clean your data.
+
+
+Q6. Which of the following is mutable in nature Series, DataFrame, Panel?
+Ans:- 
+Both Series and DataFrames are mutable in nature in Pandas. This means that their values can be changed after they are created. For example, you can add new rows or columns to a DataFrame, or you can change the values in a Series.
+
+Panels are immutable in nature in Pandas. This means that their values cannot be changed after they are created. However, you can create new Panels from existing Panels, or you can select subsets of Panels.
+
+Q7. Create a DataFrame using multiple Series. Explain with an example.
+Ans:- 
+To create a DataFrame using multiple Series, you can use the pandas.concat() function. This function takes a list of Series objects as input and concatenates them into a single DataFrame.
+
+Examples:
+
+import pandas as pd
+
+# Create a list of Series objects
+series1 = pd.Series([4, 8, 15, 16, 23, 42])
+series2 = pd.Series(['Alice', 'Bob', 'Claire', 'David', 'Eve', 'Frank'])
+
+# Concatenate the Series objects into a DataFrame
+df = pd.concat([series1, series2], axis=1)
+
+# Print the DataFrame
+print(df)
+
+
+Output:
+
+   0  Name
+0    4  Alice
+1    8   Bob
+2   15  Claire
+3   16  David
+4   23   Eve
+5   42  Frank
+
+You can also use the pandas.merge() function to create a DataFrame from multiple Series objects. However, the merge() function is more powerful and flexible than the concat() function. It allows you to merge Series objects based on common values in their indices.
+
+Example:
+
+import pandas as pd
+
+# Create a list of Series objects
+series1 = pd.Series([4, 8, 15, 16, 23, 42])
+series2 = pd.Series(['Alice', 'Bob', 'Claire', 'David', 'Eve', 'Frank'])
+
+# Merge the Series objects into a DataFrame based on their indices
+df = pd.merge(series1, series2, left_index=True, right_index=True)
+
+# Print the DataFrame
+print(df)
+
+Output:
+
+  0  Name
+0    4  Alice
+1    8   Bob
+2   15  Claire
